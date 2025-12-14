@@ -1,0 +1,6 @@
+# Tailwind Theme Color Setting 
+isDone : false 
+
+1. Main Text 
+2. Sub Text 
+3. Third Text
