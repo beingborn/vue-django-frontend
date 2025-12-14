@@ -1,9 +1,9 @@
 @import 'tailwindcss';
-@import "tailwindcss-primeui";
+@import 'tailwindcss-primeui';
 
 @font-face {
-    font-family: "Pretendard Variable";
-    src: url("./assets/fonts/PretendardVariable.woff2") format("woff2");
+    font-family: 'Pretendard Variable';
+    src: url('./assets/fonts/PretendardVariable.woff2') format('woff2');
     font-weight: 100 900;
     font-style: swap;
 }
@@ -18,13 +18,17 @@
     --text-muted-foreground: theme('colors.gray.500');
 }
 
-@layer base {   
-    html,body, *, *::before ,*::after  {
-        font-family: "Pretendard Variable", sans-serif;
+@layer base {
+    html,
+    body,
+    *,
+    *::before,
+    *::after {
+        font-family: 'Pretendard Variable', sans-serif;
     }
 
     html {
-        @apply text-[16px];        
+        @apply text-[16px];
     }
 
     body {

@@ -1,6 +1,54 @@
-# Tailwind Theme Color Setting 
-isDone : false 
+# 프로젝트 세팅 
+    - [v] Formatter 
+        [v] Prettier
+        [v] Linter
 
-1. Main Text 
-2. Sub Text 
-3. Third Text
+    - UI 라이브러리 
+        [v] Tailwind 4+
+        [v] PrimeVue 
+
+    - 스타일 
+        [v] 폰트 세팅 
+        [] 전역 Root 컬러 세팅 
+
+    - 라우터  
+        [v] 기본 View 세팅
+        [] 네비게이션 가드 설정 *: Backend 로직 구현 완료시 설정
+    
+    - 기본 공통 레이아웃 생성 
+        - 글로벌 레이아웃
+            [v] Header 
+            [v] Main 
+            [v] Footer
+
+    - 상태 관리 (Pinia)
+        [] 사용자 인증 정보 (세션)
+        [] 다크/라이브 테마 
+        [] 전역 모달 상태 
+        [] Alert 모달
+    
+    - 페이지 제작 (우선 순위 정렬)
+        [] SignUpView : 회원가입 
+        [] SignInView : 로그인         
+        [] IndexPage : 메인 페이지
+        [] PostDetailView : 포스트 상세 페이지 
+        [] ProfileDetailView : 프로필 상세 페이지
+
+    - API 데이터 페칭 
+        Post 
+            [] 조회 
+            [] 삭제 
+            [] 수정
+        Profile 
+            [] 조회 
+            [] 삭제 
+            [] 수정
+        Tag 
+            [] 조회 
+            [] 삭제 
+            [] 수정
+
+    - 빌드 배포 
+        [] 프로젝트 Build
+        [] AWS S3 버킷 생성
+        [] AWS Cloud Front 배포 
