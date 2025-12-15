@@ -1,6 +1,10 @@
 <script setup>
     import { BxDevTo, FlWeatherSunny, OcPerson } from '@kalimahapps/vue-icons';
     import { RouterView } from 'vue-router';
+
+    function toggleDarkMode() {
+        document.documentElement.classList.toggle('my-app-dark');
+    }
 </script>
 
 <template>
@@ -14,7 +18,7 @@
                     </a>
                 </h1>
                 <div class="flex items-center gap-2">
-                    <button type="button" class="cursor-pointer">
+                    <button @click="toggleDarkMode" type="button" class="cursor-pointer">
                         <FlWeatherSunny class="text-4xl" />
                     </button>
                     <button type="button" class="cursor-pointer">

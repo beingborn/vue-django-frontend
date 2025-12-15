@@ -10,6 +10,8 @@
     - 스타일 
         [v] 폰트 세팅 
         [] 전역 Root 컬러 세팅 
+            [] PrimeVue Color Setting
+        [] 다크모드 세팅 
 
     - 라우터  
         [v] 기본 View 세팅
