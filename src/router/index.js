@@ -1,3 +1,4 @@
+import SignInView from '@/views/SignInView.vue';
 import SignUpView from '@/views/SignUpView.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import IndexView from '../views/IndexView.vue';
@@ -14,6 +15,11 @@ const router = createRouter({
             path: '/signup',
             name: 'signup',
             component: SignUpView,
+        },
+        {
+            path: '/signin',
+            name: 'signin',
+            component: SignInView,
         },
     ],
 });

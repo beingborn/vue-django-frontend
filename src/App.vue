@@ -10,7 +10,7 @@
 <template>
     <div class="flex flex-col items-stretch min-h-screen">
         <header class="border-b border-b-gray-300">
-            <div class="w-full max-w-[1300px] mx-auto flex items-center justify-between h-15 px-4">
+            <div class="w-full max-w-[800px] mx-auto flex items-center justify-between h-15 px-4">
                 <h1>
                     <a href="/" class="flex gap-2 items-center font-bold text-xl">
                         <BxDevTo class="text-3xl" />
@@ -29,7 +29,7 @@
         </header>
 
         <main
-            class="grow max-w-[1300px] mx-auto p-8 border-l border-l-gray-300 border-r border-gray-300 w-full"
+            class="relative grow max-w-[800px] mx-auto p-8 border-l border-l-gray-300 border-r border-gray-300 w-full"
         >
             <RouterView />
         </main>

@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
+
 @custom-variant dark (&:where(.my-app-dark, .my-app-dark *));
 
 @font-face {
@@ -10,15 +11,17 @@
 }
 
 @theme {
-    --text-pri: #333;
-    --text-sec: #666;
-    --text-thr: #999;
+    --color-text-pri: #333;
+    --color-text-sec: #666;
+    --color-text-thr: #999;
 
     --text-dark-pri: #fff;
+
+    --color-bg-pri: #f4f4f4;
 }
 
 :root {
-    --body-bg: var(--my-surface-50);
+    --body-bg: #fff;
     --body-txt: var(--text-pri);
 }
 

@@ -1,12 +1,3 @@
-<!-- 
-    Todo : 
-    
-    Validation 체크 
-
-    성공 시 > 폼 초기화
-
--->
-
 <script setup>
     import { Form, FormField } from '@primevue/forms';
     import { Button, InputText, Message, Password, RadioButton, RadioButtonGroup } from 'primevue';
@@ -40,7 +31,7 @@
         <Form @submit="onSubmit" ref="form" class="flex flex-col items-stretch gap-4">
             <!-- UserName -->
             <FormField initialValue="" name="username" v-slot="$field" class="flex flex-col gap-2">
-                <label for="user-name-input" class="text-lg font-medium">
+                <label for="user-name-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     유저명
                 </label>
@@ -52,7 +43,7 @@
 
             <!-- NickName -->
             <FormField initialValue="" name="nickname" v-slot="$field" class="flex flex-col gap-2">
-                <label for="nickname-input" class="text-lg font-medium">
+                <label for="nickname-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     닉네임
                 </label>
@@ -69,7 +60,7 @@
                 v-slot="$field"
                 class="flex flex-col gap-2"
             >
-                <p class="text-lg font-medium">
+                <p class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     성별
                 </p>
@@ -91,7 +82,7 @@
 
             <!-- Address -->
             <FormField initialValue="" name="address" v-slot="$field" class="flex flex-col gap-2">
-                <label for="address-input" class="text-lg font-medium">
+                <label for="address-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     주소
                 </label>
@@ -108,13 +99,13 @@
                 v-slot="$field"
                 class="flex flex-col gap-2"
             >
-                <label for="address-detail-input" class="text-lg font-medium">상세 주소</label>
+                <label for="address-detail-input" class="text-md font-medium">상세 주소</label>
                 <InputText id="address-detail-input" type="text" placeholder="상세 주소" />
             </FormField>
 
             <!-- Email -->
             <FormField initialValue="" name="email" v-slot="$field" class="flex flex-col gap-2">
-                <label for="email-input" class="text-lg font-medium">
+                <label for="email-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     이메일
                 </label>
@@ -126,7 +117,7 @@
 
             <!-- Password -->
             <FormField initialValue="" name="password" v-slot="$field" class="flex flex-col gap-2">
-                <label for="password-input" class="text-lg font-medium">
+                <label for="password-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     비밀번호
                 </label>
@@ -145,7 +136,7 @@
 
             <!-- Birth -->
             <FormField initialValue="" name="birth" v-slot="$field" class="flex flex-col gap-2">
-                <label for="birth-input" class="text-lg font-medium">
+                <label for="birth-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     생년월일
                 </label>
@@ -165,7 +156,7 @@
             <Button type="submit" severity="primary" label="회원가입" />
         </Form>
 
-        <a href="/sign-in" class="text-muted-foreground hover:underline mt-4"
+        <a href="/signin" class="text-muted-foreground hover:underline mt-4"
             >이미 계정이 있다면? 로그인</a
         >
     </div>
