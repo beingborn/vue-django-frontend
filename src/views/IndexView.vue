@@ -1,6 +1,12 @@
 <script setup>
-    import { AkCirclePlus, AkSearch } from '@kalimahapps/vue-icons';
-    import { Button, IconField, InputIcon, InputText, Listbox } from 'primevue';
+    import DefaultAvatar from '@/assets/images/default_avatar.jpg';
+    import {
+        AkCirclePlus,
+        AkHeart,
+        AnFilledHeart,
+        AnOutlinedComment,
+    } from '@kalimahapps/vue-icons';
+    import { Button, InputGroup, InputGroupAddon, InputText, Listbox } from 'primevue';
     import { ref } from 'vue';
 
     const selectedTags = ref(null);
@@ -15,41 +21,127 @@
 
 <template>
     <div class="flex flex-col">
-        <aside class="absolute top-8 -right-64">
-            <div class="w-60 flex flex-col gap-4 p-4 border border-gray-300 rounded-sm">
-                <IconField>
-                    <InputText placeholder="검색어를 입력하세요." fluid />
-                    <InputIcon>
-                        <AkSearch class="text-1xl text-text-thr" />
-                    </InputIcon>
-                </IconField>
-                <div class="flex flex-col gap-2">
-                    <Listbox
-                        checkmark
-                        :highlightOnSelect="false"
-                        v-model="selectedTags"
-                        :options="tags"
-                        multiple
-                        optionLabel="name"
-                        class="w-full"
-                    />
-                </div>
-                <Button class="w-full flex items-center gap-2">
-                    <span>검색</span>
-                </Button>
+        <div class="flex flex-col gap-2 mb-8">
+            <div class="text-2xl">
+                <p>안녕하세요</p>
+                <strong>OO님!</strong>
             </div>
-        </aside>
-        <div class="flex flex-col gap-2">
             <!-- 포스트 작성 -->
             <button
                 type="button"
                 class="bg-muted text-text-sec cursor-pointer rounded-xl px-6 py-4 bg-bg-pri"
             >
-                <div class="flex justify-between bg-color-bg-pri">
-                    <span> 포스트를 작성해주세요! </span>
+                <div class="flex justify-between bg-color-bg-pri items-center">
+                    <span> 포스트를 작성해주세요!</span>
                     <AkCirclePlus class="w-5 h-5 text-text-sec" />
                 </div>
             </button>
         </div>
+
+        <div class="flex flex-col gap-4">
+            <InputGroup>
+                <InputText placeholder="키워드를 입력하세요." fluid />
+                <InputGroupAddon>
+                    <Button class="cursor-pointer" severity="primary">
+                        <span class="text-white">검색 </span>
+                    </Button>
+                </InputGroupAddon>
+            </InputGroup>
+            <Listbox
+                checkmark
+                :highlightOnSelect="false"
+                v-model="selectedTags"
+                :options="tags"
+                multiple
+                optionLabel="name"
+                class="w-full"
+                listStyle="max-height: 100px"
+            />
+        </div>
+        <!-- Feed -->
+        <section class="flex flex-col mt-8">
+            <article class="flex flex-col gap-4 py-4 border-b border-b-gray-100">
+                <div class="flex flex-row justify-between">
+                    <div class="flex items-center gap-3 text-text-sec">
+                        <img
+                            class="h-8 w-8 rounded-full"
+                            :src="DefaultAvatar"
+                            alt="OO 프로필 이미지"
+                        />
+                        <div class="flex flex-col">
+                            <p class="font-bold">유저명</p>
+                            <p>3일 전</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                            >수정</Button
+                        >
+                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                            >삭제</Button
+                        >
+                    </div>
+                </div>
+                <div class="min-h-15">
+                    <p>텍스트를 출력해주세요.</p>
+                    <p>텍스트를 출력해주세요.</p>
+                    <p>텍스트를 출력해주세요.</p>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <button type="button" class="h-10 rounded-md px-3 border border-gray-300">
+                        <AkHeart />
+                        <AnFilledHeart class="hidden" />
+                    </button>
+                    <button
+                        type="button"
+                        class="flex gap-2 items-center rounded-md h-10 px-3 border border-gray-300 text-sm"
+                    >
+                        <span> 댓글 달기 </span>
+                        <AnOutlinedComment />
+                    </button>
+                </div>
+            </article>
+            <article class="flex flex-col gap-4 py-4 border-b border-b-gray-100">
+                <div class="flex flex-row justify-between">
+                    <div class="flex items-center gap-3 text-text-sec">
+                        <img
+                            class="h-8 w-8 rounded-full"
+                            :src="DefaultAvatar"
+                            alt="OO 프로필 이미지"
+                        />
+                        <div class="flex flex-col">
+                            <p class="font-bold">유저명</p>
+                            <p>3일 전</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                            >수정</Button
+                        >
+                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                            >삭제</Button
+                        >
+                    </div>
+                </div>
+                <div class="min-h-15">
+                    <p>텍스트를 출력해주세요.</p>
+                    <p>텍스트를 출력해주세요.</p>
+                    <p>텍스트를 출력해주세요.</p>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <button type="button" class="h-10 rounded-md px-3 border border-gray-300">
+                        <AkHeart />
+                        <AnFilledHeart class="hidden" />
+                    </button>
+                    <button
+                        type="button"
+                        class="flex gap-2 items-center rounded-md h-10 px-3 border border-gray-300 text-sm"
+                    >
+                        <span> 댓글 달기 </span>
+                        <AnOutlinedComment />
+                    </button>
+                </div>
+            </article>
+        </section>
     </div>
 </template>
