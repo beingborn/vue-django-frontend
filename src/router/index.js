@@ -1,3 +1,4 @@
+import PostDetailView from '@/views/PostDetailView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import SignInView from '@/views/SignInView.vue';
 import SignUpView from '@/views/SignUpView.vue';
@@ -26,6 +27,11 @@ const router = createRouter({
             path: '/profile/:id',
             name: 'profile',
             component: ProfileView,
+        },
+        {
+            path: '/post/:id',
+            name: 'post-detail',
+            component: PostDetailView,
         },
     ],
 });

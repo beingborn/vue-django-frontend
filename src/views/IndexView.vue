@@ -20,24 +20,26 @@
         <div class="flex flex-col gap-4">
             <CreatePostButton />
 
-            <InputGroup>
-                <InputText placeholder="키워드를 입력하세요." fluid />
-                <InputGroupAddon>
-                    <Button class="cursor-pointer" severity="primary">
-                        <span class="text-white">검색 </span>
-                    </Button>
-                </InputGroupAddon>
-            </InputGroup>
-            <Listbox
-                checkmark
-                :highlightOnSelect="false"
-                v-model="selectedTags"
-                :options="tags"
-                multiple
-                optionLabel="name"
-                class="w-full"
-                listStyle="max-height: 100px"
-            />
+            <span class="hidden">
+                <InputGroup>
+                    <InputText placeholder="키워드를 입력하세요." fluid />
+                    <InputGroupAddon>
+                        <Button class="cursor-pointer" severity="primary">
+                            <span class="text-white">검색 </span>
+                        </Button>
+                    </InputGroupAddon>
+                </InputGroup>
+                <Listbox
+                    checkmark
+                    :highlightOnSelect="false"
+                    v-model="selectedTags"
+                    :options="tags"
+                    multiple
+                    optionLabel="name"
+                    class="w-full"
+                    listStyle="max-height: 100px"
+                />
+            </span>
         </div>
 
         <!-- Feed -->

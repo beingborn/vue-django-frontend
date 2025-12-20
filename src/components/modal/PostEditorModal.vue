@@ -10,7 +10,6 @@
     const content = ref('');
     const selectedtag = ref('');
     const images = ref([]);
-
     const fileInput = useTemplateRef('file-input');
     const tags = ref(['태그 선택', '태그1', '태그2', '태그3', '태그4', '태그5']);
 
@@ -83,7 +82,7 @@
                         <img
                             :src="slotProps.data.previewUrl"
                             :alt="slotProps.data.file.name"
-                            class="w-full h-full object-contain"
+                            class="w-full h-full object-contain rounded-md"
                         />
                         <button
                             @click="() => handleDeleteImage(slotProps.data)"

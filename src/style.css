@@ -53,4 +53,8 @@
         background-color: var(--body-bg);
         color: var(--body-txt);
     }
+
+    button {
+        @apply cursor-pointer;
+    }
 }
