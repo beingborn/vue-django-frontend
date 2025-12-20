@@ -1,11 +1,7 @@
 <script setup>
     import DefaultAvatar from '@/assets/images/default_avatar.jpg';
-    import {
-        AkCirclePlus,
-        AkHeart,
-        AnFilledHeart,
-        AnOutlinedComment,
-    } from '@kalimahapps/vue-icons';
+    import CreatePostButton from '@/components/post/CreatePostButton.vue';
+    import { AkHeart, AnFilledHeart, AnOutlinedComment } from '@kalimahapps/vue-icons';
     import { Button, InputGroup, InputGroupAddon, InputText, Listbox } from 'primevue';
     import { ref } from 'vue';
 
@@ -21,24 +17,9 @@
 
 <template>
     <div class="flex flex-col">
-        <div class="flex flex-col gap-2 mb-8">
-            <div class="text-2xl">
-                <p>안녕하세요</p>
-                <strong>OO님!</strong>
-            </div>
-            <!-- 포스트 작성 -->
-            <button
-                type="button"
-                class="bg-muted text-text-sec cursor-pointer rounded-xl px-6 py-4 bg-bg-pri"
-            >
-                <div class="flex justify-between bg-color-bg-pri items-center">
-                    <span> 포스트를 작성해주세요!</span>
-                    <AkCirclePlus class="w-5 h-5 text-text-sec" />
-                </div>
-            </button>
-        </div>
-
         <div class="flex flex-col gap-4">
+            <CreatePostButton />
+
             <InputGroup>
                 <InputText placeholder="키워드를 입력하세요." fluid />
                 <InputGroupAddon>
