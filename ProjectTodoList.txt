@@ -9,9 +9,9 @@
 
     - 스타일 
         [v] 폰트 세팅 
-        [] 전역 Root 컬러 세팅 
-            [] PrimeVue Color Setting
-        [] 다크모드 세팅 
+        [v] 전역 Root 컬러 세팅 
+            [v] PrimeVue Color Setting
+        [v] 다크모드 세팅 
 
     - 라우터  
         [v] 기본 View 세팅
@@ -37,6 +37,13 @@
             [v] 레이아웃 
             [] 유효성 검사 및 로직     
         [] IndexPage : 메인 페이지
+            [] Post 생성 모달 만들기
+                [] UI 모달 만들기 
+                [] 모달 열림 전역 상태, 액션 함수 만들기
+                [] 공용 로직으로 분리하여 Export 하기  
+                [] Modal Provider로 앱 감싸고 Teleport (CreatePortal) 기능 적용하기
+                [] 테스트하기
+
         [] PostDetailView : 포스트 상세 페이지 
         [] ProfileDetailView : 프로필 상세 페이지
 

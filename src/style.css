@@ -11,11 +11,15 @@
 }
 
 @theme {
-    --color-text-pri: #333;
-    --color-text-sec: #666;
-    --color-text-thr: #999;
+    --color-txt-pri: #333;
+    --color-txt-sec: #666;
+    --color-txt-thr: #999;
 
     --text-dark-pri: #fff;
+
+    --color-bd-pri: #6b7280;
+    --color-bd-sec: #d1d5db;
+    --color-bd-thr: #f3f4f6;
 
     --color-bg-pri: #f4f4f4;
 }

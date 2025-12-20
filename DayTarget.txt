@@ -1,0 +1,7 @@
+# 20251219
+  [v] Border Color Tailwind 설정하여 Border-300, 100 등 통일성 지키기
+  [v] PostEditor 모달 UI 완성
+
+
+# 20251220
+  [] 전역 상태 관리 

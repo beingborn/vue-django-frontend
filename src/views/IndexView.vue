@@ -58,9 +58,10 @@
                 listStyle="max-height: 100px"
             />
         </div>
+
         <!-- Feed -->
         <section class="flex flex-col mt-8">
-            <article class="flex flex-col gap-4 py-4 border-b border-b-gray-100">
+            <article class="flex flex-col gap-4 py-4 border-b border-b-bd-sec">
                 <div class="flex flex-row justify-between">
                     <div class="flex items-center gap-3 text-text-sec">
                         <img
@@ -74,10 +75,10 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
-                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                        <Button severity="secondary" variant="text" class="hover:bg-bd-thr"
                             >수정</Button
                         >
-                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                        <Button severity="secondary" variant="text" class="hover:bg-bd-thr"
                             >삭제</Button
                         >
                     </div>
@@ -88,20 +89,20 @@
                     <p>텍스트를 출력해주세요.</p>
                 </div>
                 <div class="flex gap-2 items-center">
-                    <button type="button" class="h-10 rounded-md px-3 border border-gray-300">
+                    <button type="button" class="h-10 rounded-md px-3 border border-bd-sec">
                         <AkHeart />
                         <AnFilledHeart class="hidden" />
                     </button>
                     <button
                         type="button"
-                        class="flex gap-2 items-center rounded-md h-10 px-3 border border-gray-300 text-sm"
+                        class="flex gap-2 items-center rounded-md h-10 px-3 border border-bd-sec text-sm"
                     >
                         <span> 댓글 달기 </span>
                         <AnOutlinedComment />
                     </button>
                 </div>
             </article>
-            <article class="flex flex-col gap-4 py-4 border-b border-b-gray-100">
+            <article class="flex flex-col gap-4 py-4 border-b border-b-bd-thr">
                 <div class="flex flex-row justify-between">
                     <div class="flex items-center gap-3 text-text-sec">
                         <img
@@ -115,10 +116,10 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
-                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                        <Button severity="secondary" variant="text" class="hover:bg-bd-thr"
                             >수정</Button
                         >
-                        <Button severity="secondary" variant="text" class="hover:bg-gray-100"
+                        <Button severity="secondary" variant="text" class="hover:bg-bd-thr"
                             >삭제</Button
                         >
                     </div>
@@ -129,13 +130,13 @@
                     <p>텍스트를 출력해주세요.</p>
                 </div>
                 <div class="flex gap-2 items-center">
-                    <button type="button" class="h-10 rounded-md px-3 border border-gray-300">
+                    <button type="button" class="h-10 rounded-md px-3 border border-bd-sec">
                         <AkHeart />
                         <AnFilledHeart class="hidden" />
                     </button>
                     <button
                         type="button"
-                        class="flex gap-2 items-center rounded-md h-10 px-3 border border-gray-300 text-sm"
+                        class="flex gap-2 items-center rounded-md h-10 px-3 border border-bd-sec text-sm"
                     >
                         <span> 댓글 달기 </span>
                         <AnOutlinedComment />

@@ -6,7 +6,7 @@
             :placeholder="placeholder"
             :disabled="disabled"
             :class="[
-                'w-full block appearance-none h-8 rounded-md border py-4 px-3 placeholder-gray-600',
+                'w-full block appearance-none h-8 rounded-md border py-4 px-3 placeholder-bd-pri',
                 'focus:outline-blue transition duration-150 ease-in-out',
             ]"
             v-bind="$attrs"
