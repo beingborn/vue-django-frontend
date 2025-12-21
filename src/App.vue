@@ -1,10 +1,7 @@
 <script setup>
     import ModalProvider from '@/provider/ModalProvider.vue';
-    import { BxDevTo, FlWeatherSunny, OcPerson } from '@kalimahapps/vue-icons';
-    import { ref } from 'vue';
-    import { RouterView } from 'vue-router';
-
-    const visible = ref(true);
+import { BxDevTo, FlWeatherSunny, OcPerson } from '@kalimahapps/vue-icons';
+import { RouterView } from 'vue-router';
 
     function toggleDarkMode() {
         document.documentElement.classList.toggle('my-app-dark');

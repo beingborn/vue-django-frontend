@@ -19,7 +19,6 @@
     <div class="flex flex-col">
         <div class="flex flex-col gap-4">
             <CreatePostButton />
-
             <span class="hidden">
                 <InputGroup>
                     <InputText placeholder="키워드를 입력하세요." fluid />

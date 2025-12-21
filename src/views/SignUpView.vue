@@ -1,23 +1,43 @@
 <script setup>
     import { Form, FormField } from '@primevue/forms';
+    import axios from 'axios';
     import { Button, InputText, Message, Password, RadioButton, RadioButtonGroup } from 'primevue';
     import DatePicker from 'primevue/datepicker';
-    import { ref } from 'vue';
 
-    const form = ref('form');
+    const signup = (event) => {
+        /* TODO
+            1. Date Format 함수로 분리 10이하 포멧팅
+            2. Signin 함수 만들기 => 로컬 스토리지에 저장 (엑세스 토큰, 이름 등..)
+            3. 닫으면 로컬스토리지 날리기 
 
-    const onSubmit = (values) => {
-        // 성공시
-        if (values) {
-            form.value.setFieldValue('username', '');
-            form.value.setFieldValue('nickname', '');
-            form.value.setFieldValue('gender', '');
-            form.value.setFieldValue('address', '');
-            form.value.setFieldValue('address-detail', '');
-            form.value.setFieldValue('email', '');
-            form.value.setFieldValue('password', '');
-            form.value.setFieldValue('birth', '');
-        }
+
+            포스트 조회
+            포스트 수정
+            포스트 삭제
+        */
+
+        const date =
+            event.values.birth.getFullYear() +
+            '-' +
+            event.values.birth.getMonth() +
+            '-' +
+            event.values.birth.getDate();
+
+        console.log(date);
+
+        axios
+            .post(import.meta.env.VITE_API_BASE_URL + '/signup', {
+                name: event.values.username,
+                nickname: event.values.nickname,
+                gender: event.values.gender,
+                address: event.values.address + event.values.addressDetail,
+                email: event.values.email,
+                password: event.values.password,
+                birth: date,
+            })
+            .then((response) => {
+                console.log(response);
+            });
     };
 </script>
 
@@ -28,9 +48,14 @@
             <p><span class="text-red-500">*</span>는 필수 입력 항목입니다.</p>
         </div>
 
-        <Form @submit="onSubmit" ref="form" class="flex flex-col items-stretch gap-4">
+        <Form @submit="signup" ref="form" class="flex flex-col items-stretch gap-4">
             <!-- UserName -->
-            <FormField initialValue="" name="username" v-slot="$field" class="flex flex-col gap-2">
+            <FormField
+                initialValue="이민혁"
+                name="username"
+                v-slot="$field"
+                class="flex flex-col gap-2"
+            >
                 <label for="user-name-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     유저명
@@ -42,7 +67,12 @@
             </FormField>
 
             <!-- NickName -->
-            <FormField initialValue="" name="nickname" v-slot="$field" class="flex flex-col gap-2">
+            <FormField
+                initialValue="불타버린"
+                name="nickname"
+                v-slot="$field"
+                class="flex flex-col gap-2"
+            >
                 <label for="nickname-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     닉네임
@@ -55,7 +85,7 @@
 
             <!-- Gender -->
             <FormField
-                initialValue="male"
+                initialValue="MALE"
                 name="gender"
                 v-slot="$field"
                 class="flex flex-col gap-2"
@@ -66,11 +96,11 @@
                 </p>
                 <RadioButtonGroup class="flex gap-4">
                     <div class="flex items-center gap-2">
-                        <RadioButton inputId="male" value="male" />
+                        <RadioButton inputId="male" value="MALE" />
                         <label for="male">남성</label>
                     </div>
                     <div class="flex items-center gap-2">
-                        <RadioButton inputId="female" value="female" />
+                        <RadioButton inputId="female" value="FEMAIL" />
                         <label for="female">여성</label>
                     </div>
                     <div class="flex items-center gap-2">
@@ -81,7 +111,12 @@
             </FormField>
 
             <!-- Address -->
-            <FormField initialValue="" name="address" v-slot="$field" class="flex flex-col gap-2">
+            <FormField
+                initialValue="서울특별시 은평구"
+                name="address"
+                v-slot="$field"
+                class="flex flex-col gap-2"
+            >
                 <label for="address-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     주소
@@ -94,8 +129,8 @@
 
             <!-- Address Detail -->
             <FormField
-                initialValue=""
-                name="address-detail"
+                initialValue="통일로 767"
+                name="addressDetail"
                 v-slot="$field"
                 class="flex flex-col gap-2"
             >
@@ -104,7 +139,12 @@
             </FormField>
 
             <!-- Email -->
-            <FormField initialValue="" name="email" v-slot="$field" class="flex flex-col gap-2">
+            <FormField
+                initialValue="aa@naver.com"
+                name="email"
+                v-slot="$field"
+                class="flex flex-col gap-2"
+            >
                 <label for="email-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     이메일
@@ -116,7 +156,12 @@
             </FormField>
 
             <!-- Password -->
-            <FormField initialValue="" name="password" v-slot="$field" class="flex flex-col gap-2">
+            <FormField
+                initialValue="minhuk0303"
+                name="password"
+                v-slot="$field"
+                class="flex flex-col gap-2"
+            >
                 <label for="password-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     비밀번호
@@ -135,7 +180,13 @@
             </FormField>
 
             <!-- Birth -->
-            <FormField initialValue="" name="birth" v-slot="$field" class="flex flex-col gap-2">
+            <FormField
+                initialValue="
+"
+                name="birth"
+                v-slot="$field"
+                class="flex flex-col gap-2"
+            >
                 <label for="birth-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     생년월일
