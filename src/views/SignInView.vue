@@ -1,27 +1,41 @@
 <script setup>
     import { Form, FormField } from '@primevue/forms';
+    import axios from 'axios';
     import { Button, InputText, Message, Password } from 'primevue';
-    import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
 
-    const form = ref('form');
+    const router = useRouter();
 
-    const onSubmit = (values) => {
-        // 성공시
-        if (values) {
-            form.value.setFieldValue('email', '');
-            form.value.setFieldValue('password', '');
+    const signin = async (event) => {
+        try {
+            const response = await axios.post(import.meta.env.VITE_API_BASE_URL + '/login', {
+                email: event.values.email,
+                password: event.values.password,
+            });
+
+            if (response) {
+                localStorage.setItem('access_token', response.data.access_token);
+
+                router.push('/');
+            }
+        } catch (error) {
+            console.log(error);
         }
     };
+
+    // 엑세스 토큰 저장
+    /**
+     * 1. 로컬스토리지에 저장 키 밸류값으로 저장
+     */
 </script>
 
 <template>
     <div class="flex flex-col">
         <div class="flex items-center justify-between mb-8">
             <h2 class="text-2xl font-bold">로그인</h2>
-            <p><span class="text-red-500">*</span>는 필수 입력 항목입니다.</p>
         </div>
 
-        <Form @submit="onSubmit" ref="form" class="flex flex-col items-stretch gap-4">
+        <Form @submit="signin" ref="form" class="flex flex-col items-stretch gap-4">
             <!-- Email -->
             <FormField
                 title="email"
@@ -39,7 +53,7 @@
             <!-- Password -->
             <FormField initialValue="" name="password" v-slot="$field" class="flex flex-col gap-2">
                 <Password
-                    title="email"
+                    title="password"
                     inputId="password-input"
                     type="text"
                     placeholder="Password"
