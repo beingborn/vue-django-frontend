@@ -36,4 +36,13 @@ const router = createRouter({
     ],
 });
 
+router.beforeEach(async (to, from) => {
+    const isAuthenticated = localStorage.getItem('access_token') || '';
+
+    if (!isAuthenticated && to.name !== 'signin') {
+        console.log('로그인 페이지도 아니고 로그인도 안되어있음');
+        return { name: 'signin' };
+    }
+});
+
 export default router;
