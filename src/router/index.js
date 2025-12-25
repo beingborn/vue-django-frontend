@@ -1,3 +1,4 @@
+import NotFoundView from '@/views/NotFoundView.vue';
 import PostDetailView from '@/views/PostDetailView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import SignInView from '@/views/SignInView.vue';
@@ -33,10 +34,15 @@ const router = createRouter({
             name: 'post-detail',
             component: PostDetailView,
         },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'not-found-fage',
+            component: NotFoundView,
+        },
     ],
 });
 
-router.beforeEach(async (to, from) => {
+router.beforeEach((to, from) => {
     const isAuthenticated = localStorage.getItem('access_token') || '';
 
     if (!isAuthenticated && to.name !== 'signin') {
