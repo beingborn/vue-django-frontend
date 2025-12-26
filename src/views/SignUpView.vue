@@ -1,28 +1,32 @@
 <script setup>
+    import { filterDateByYyyyMmDd } from '@/lib/time';
     import { Form, FormField } from '@primevue/forms';
     import axios from 'axios';
     import { Button, InputText, Message, Password, RadioButton, RadioButtonGroup } from 'primevue';
     import DatePicker from 'primevue/datepicker';
 
-    const signup = (event) => {
-        /* TODO
-            1. Date Format 함수로 분리 10이하 포멧팅
-            2. Signin 함수 만들기 => 로컬 스토리지에 저장 (엑세스 토큰, 이름 등..)
-            3. 닫으면 로컬스토리지 날리기 
+    const signup = async (event) => {
+        const date = filterDateByYyyyMmDd(event.values.birth);
 
+        try {
+            const response = await axios.post(import.meta.env.VITE_API_BASE_URL + '/signup', {
+                name: event.values.username,
+                nickname: event.values.nickname,
+                gender: event.values.gender,
+                address: event.values.address + event.values.addressDetail,
+                email: event.values.email,
+                password: event.values.password,
+                birth: date,
+            });
 
-            포스트 조회
-            포스트 수정
-            포스트 삭제
-        */
+            console.log('response:', response.data);
+        } catch (err) {
+            console.log('error:', err);
+        }
+    };
 
-        const date =
-            event.values.birth.getFullYear() +
-            '-' +
-            event.values.birth.getMonth() +
-            '-' +
-            event.values.birth.getDate();
-
+    const signup2 = (event) => {
+        const date = filterDateByYyyyMmDd(event.values.birth);
         console.log(date);
 
         axios
