@@ -1,7 +1,11 @@
 <script setup>
     import ModalProvider from '@/provider/ModalProvider.vue';
-import { BxDevTo, FlWeatherSunny, OcPerson } from '@kalimahapps/vue-icons';
-import { RouterView } from 'vue-router';
+    import { useUserStore } from '@/store/user';
+    import { BxDevTo, FlWeatherSunny, OcPerson } from '@kalimahapps/vue-icons';
+    import { RouterView } from 'vue-router';
+
+    const userStore = useUserStore();
+    const { logout } = userStore;
 
     function toggleDarkMode() {
         document.documentElement.classList.toggle('my-app-dark');
@@ -25,7 +29,7 @@ import { RouterView } from 'vue-router';
                         <button @click="toggleDarkMode" type="button" class="cursor-pointer">
                             <FlWeatherSunny class="text-4xl" />
                         </button>
-                        <button type="button" class="cursor-pointer">
+                        <button type="button" class="cursor-pointer" @click="logout">
                             <OcPerson class="text-4xl" />
                         </button>
                     </div>
