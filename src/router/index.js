@@ -13,41 +13,63 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: IndexView,
+            meta: {
+                requiresAuth: true,
+            },
         },
         {
             path: '/signup',
             name: 'signup',
             component: SignUpView,
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
             path: '/signin',
             name: 'signin',
             component: SignInView,
+            meta: {
+                requiresAuth: false,
+            },
         },
         {
             path: '/profile/:id',
             name: 'profile',
             component: ProfileView,
+            meta: {
+                requiresAuth: true,
+            },
         },
         {
             path: '/post/:id',
             name: 'post-detail',
             component: PostDetailView,
+            meta: {
+                requiresAuth: true,
+            },
         },
         {
             path: '/:pathMatch(.*)*',
             name: 'not-found-fage',
             component: NotFoundView,
+            meta: {
+                requiresAuth: false,
+            },
         },
     ],
 });
 
 router.beforeEach((to, from) => {
-    const isAuthenticated = localStorage.getItem('access_token') || '';
+    const isAuthenticated = !!localStorage.getItem('access_token');
 
-    if (!isAuthenticated && to.name !== 'signin') {
-        console.log('로그인 페이지도 아니고 로그인도 안되어있음');
-        return { name: 'signin' };
+    if (to.meta.requiresAuth && !isAuthenticated) {
+        alert('로그인을 해주세요!');
+
+        return {
+            path: '/signin',
+            query: { redirect: to.fullPath },
+        };
     }
 });
 
