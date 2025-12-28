@@ -4,16 +4,20 @@ import { useRouter } from 'vue-router';
 export const useUserStore = defineStore('user', () => {
     const router = useRouter();
 
+    function getAccessToken() {
+        return localStorage.getItem('access_token');
+    }
+
     function logout() {
         localStorage.removeItem('access_token');
 
-        const isRemoved = !!!localStorage.getItem('access_token');
+        const isAccessTokenRemoved = !!!localStorage.getItem('access_token');
 
-        if (!isRemoved) return;
+        if (!isAccessTokenRemoved) return;
 
         alert('로그아웃되었습니다.');
         router.push('signin');
     }
 
-    return { logout };
+    return { logout, getAccessToken };
 });

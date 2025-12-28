@@ -5,10 +5,18 @@
     import { RouterView } from 'vue-router';
 
     const userStore = useUserStore();
-    const { logout } = userStore;
+    const { logout, getAccessToken } = userStore;
 
     function toggleDarkMode() {
         document.documentElement.classList.toggle('my-app-dark');
+    }
+
+    function handleClickProfile() {
+        const accessToken = getAccessToken();
+
+        if (!accessToken) return;
+
+        logout();
     }
 </script>
 
@@ -29,7 +37,7 @@
                         <button @click="toggleDarkMode" type="button" class="cursor-pointer">
                             <FlWeatherSunny class="text-4xl" />
                         </button>
-                        <button type="button" class="cursor-pointer" @click="logout">
+                        <button type="button" class="cursor-pointer" @click="handleClickProfile">
                             <OcPerson class="text-4xl" />
                         </button>
                     </div>
