@@ -13,11 +13,22 @@
                 password: event.values.password,
             });
 
-            if (response) {
-                localStorage.setItem('access_token', response.data.access_token);
+            const user = await axios.get(import.meta.env.VITE_API_BASE_URL + '/token/view', {
+                headers: {
+                    Authorization: `Bearer ${response.data.access_token}`,
+                },
+            });
 
-                router.push('/');
-            }
+            const auth_token = {
+                access_token: response.data.access_token,
+                member_id: user.data.member_id,
+                name: user.data.name,
+                nickname: user.data.nickname,
+            };
+
+            localStorage.setItem('auth_token', JSON.stringify(auth_token));
+
+            router.push('/');
         } catch (error) {
             console.log(error);
         }

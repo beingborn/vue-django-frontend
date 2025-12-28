@@ -5,14 +5,14 @@
     import { RouterView } from 'vue-router';
 
     const userStore = useUserStore();
-    const { logout, getAccessToken } = userStore;
+    const { logout, getAuthToken } = userStore;
 
     function toggleDarkMode() {
         document.documentElement.classList.toggle('my-app-dark');
     }
 
     function handleClickProfile() {
-        const accessToken = getAccessToken();
+        const accessToken = getAuthToken();
 
         if (!accessToken) return;
 

@@ -1,10 +1,15 @@
 <script setup>
     import DefaultAvatar from '@/assets/images/default_avatar.jpg';
     import CreatePostButton from '@/components/post/CreatePostButton.vue';
+    import { useUserStore } from '@/store/user';
     import { AkHeart, AnFilledHeart, AnOutlinedComment } from '@kalimahapps/vue-icons';
     import { Button, InputGroup, InputGroupAddon, InputText, Listbox } from 'primevue';
     import { ref } from 'vue';
 
+    const userStore = useUserStore();
+    const { getAuthToken } = userStore;
+
+    const user = getAuthToken();
     const selectedTags = ref(null);
     const tags = ref([
         { name: '태그1', code: 'tag1' },
@@ -18,7 +23,7 @@
 <template>
     <div class="flex flex-col">
         <div class="flex flex-col gap-4">
-            <CreatePostButton />
+            <CreatePostButton :user="user" />
             <span class="hidden">
                 <InputGroup>
                     <InputText placeholder="키워드를 입력하세요." fluid />

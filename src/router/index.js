@@ -61,7 +61,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-    const isAuthenticated = !!localStorage.getItem('access_token');
+    const isAuthenticated = !!localStorage.getItem('auth_token');
 
     if (to.meta.requiresAuth && !isAuthenticated) {
         alert('로그인을 해주세요!');
