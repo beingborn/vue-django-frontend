@@ -24,25 +24,6 @@
             console.log('error:', err);
         }
     };
-
-    const signup2 = (event) => {
-        const date = filterDateByYyyyMmDd(event.values.birth);
-        console.log(date);
-
-        axios
-            .post(import.meta.env.VITE_API_BASE_URL + '/signup', {
-                name: event.values.username,
-                nickname: event.values.nickname,
-                gender: event.values.gender,
-                address: event.values.address + event.values.addressDetail,
-                email: event.values.email,
-                password: event.values.password,
-                birth: date,
-            })
-            .then((response) => {
-                console.log(response);
-            });
-    };
 </script>
 
 <template>

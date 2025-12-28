@@ -22,11 +22,6 @@
             console.log(error);
         }
     };
-
-    // 엑세스 토큰 저장
-    /**
-     * 1. 로컬스토리지에 저장 키 밸류값으로 저장
-     */
 </script>
 
 <template>
