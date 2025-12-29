@@ -1,6 +1,8 @@
 <script setup>
     import { usePostEditorModalStore } from '@/store/PostEditorModal';
+    import { useUserStore } from '@/store/user';
     import { CdChromeClose } from '@kalimahapps/vue-icons';
+    import axios from 'axios';
     import { Button, Carousel, Dialog, InputText, Select, Textarea } from 'primevue';
     import { ref, useTemplateRef } from 'vue';
 
@@ -12,6 +14,13 @@
     const images = ref([]);
     const fileInput = useTemplateRef('file-input');
     const tags = ref(['태그 선택', '태그1', '태그2', '태그3', '태그4', '태그5']);
+
+    const userStore = useUserStore();
+    const { getAuthToken } = userStore;
+
+    const user = getAuthToken();
+
+    console.log(user);
 
     const handleSelectImages = (e) => {
         // 파일 유무 확인
@@ -42,6 +51,25 @@
             fileInput.value.click();
         } else {
             console.log('입력창을 찾을 수 없습니다.');
+        }
+    };
+
+    const handleRegisterPost = async () => {
+        const newPost = {
+            title: title.value,
+            body: content.value,
+            tag_id: 2,
+            access_token: user.access_token,
+        };
+
+        try {
+            const response = await axios.post(import.meta.env.VITE_API_BASE_URL + '/post', newPost);
+
+            console.log(response);
+            alert('포스트 생성이 완료되었어요');
+            postEditorModal.close();
+        } catch (error) {
+            console.log(error);
         }
     };
 </script>
@@ -110,7 +138,7 @@
                     severity="secondary"
                     @click="handleFileInputClick"
                 ></Button>
-                <Button type="button" label="저장" @click="postEditorModal.close"></Button>
+                <Button type="button" label="저장" @click="handleRegisterPost"></Button>
             </div>
         </div>
     </Dialog>
