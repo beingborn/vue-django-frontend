@@ -2,19 +2,26 @@
     import ModalProvider from '@/provider/ModalProvider.vue';
     import { useUserStore } from '@/store/user';
     import { BxDevTo, FlWeatherSunny, OcPerson } from '@kalimahapps/vue-icons';
+    import { storeToRefs } from 'pinia';
+    import { Popover } from 'primevue';
+    import { ref } from 'vue';
     import { RouterView } from 'vue-router';
 
+    const profile = ref();
     const userStore = useUserStore();
-    const { logout, getAuthToken } = userStore;
+    const { logout } = userStore;
+    const { authToken } = storeToRefs(userStore);
 
     function toggleDarkMode() {
         document.documentElement.classList.toggle('my-app-dark');
     }
 
-    function handleClickProfile() {
-        const accessToken = getAuthToken();
+    function toggleProfilePopover(event) {
+        profile.value.toggle(event);
+    }
 
-        if (!accessToken) return;
+    function handleLogout(event) {
+        if (!authToken) return;
 
         logout();
     }
@@ -37,9 +44,36 @@
                         <button @click="toggleDarkMode" type="button" class="cursor-pointer">
                             <FlWeatherSunny class="text-4xl" />
                         </button>
-                        <button type="button" class="cursor-pointer" @click="handleClickProfile">
+                        <button type="button" @click="toggleProfilePopover">
                             <OcPerson class="text-4xl" />
                         </button>
+                        <Popover ref="profile" :key="authToken">
+                            <div class="flex flex-col gap-4 w-30">
+                                <a
+                                    :href="`/profile/${authToken}`"
+                                    class="leading-8 px-1 rounded-md cursor-pointer text-left hover:bg-gray-100 transition duration-300 ease-in-ou"
+                                    @click="handleClickProfile"
+                                    v-if="authToken"
+                                >
+                                    프로필
+                                </a>
+                                <button
+                                    class="leading-8 px-1 rounded-md cursor-pointer text-left hover:bg-gray-100 transition duration-300 ease-in-ou"
+                                    @click="handleLogout"
+                                    v-if="authToken"
+                                >
+                                    로그아웃
+                                </button>
+                                <a
+                                    href="/signin"
+                                    class="leading-8 px-1 rounded-md cursor-pointer text-left hover:bg-gray-100 transition duration-300 ease-in-ou"
+                                    @click="handleClickProfile"
+                                    v-if="!authToken"
+                                >
+                                    로그인
+                                </a>
+                            </div>
+                        </Popover>
                     </div>
                 </div>
             </header>

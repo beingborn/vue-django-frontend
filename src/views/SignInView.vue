@@ -1,10 +1,13 @@
 <script setup>
+    import { useUserStore } from '@/store/user';
     import { Form, FormField } from '@primevue/forms';
     import axios from 'axios';
     import { Button, InputText, Message, Password } from 'primevue';
     import { useRouter } from 'vue-router';
 
     const router = useRouter();
+    const userStore = useUserStore();
+    const { login } = userStore;
 
     const signin = async (event) => {
         try {
@@ -26,7 +29,7 @@
                 nickname: user.data.nickname,
             };
 
-            localStorage.setItem('auth_token', JSON.stringify(auth_token));
+            login(JSON.stringify(auth_token));
 
             router.push('/');
         } catch (error) {

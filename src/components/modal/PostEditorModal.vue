@@ -20,8 +20,6 @@
 
     const user = getAuthToken();
 
-    console.log(user);
-
     const handleSelectImages = (e) => {
         // 파일 유무 확인
         if (e.target.files) {

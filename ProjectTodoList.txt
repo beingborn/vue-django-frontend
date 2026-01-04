@@ -1,4 +1,4 @@
-# 프로젝트 세팅 
+g# 프로젝트 세팅 
     - [v] Formatter 
         [v] Prettier
         [v] Linter

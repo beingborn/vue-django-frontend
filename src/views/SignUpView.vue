@@ -141,12 +141,7 @@
             </FormField>
 
             <!-- Password -->
-            <FormField
-                initialValue="minhuk0303"
-                name="password"
-                v-slot="$field"
-                class="flex flex-col gap-2"
-            >
+            <FormField initialValue="" name="password" v-slot="$field" class="flex flex-col gap-2">
                 <label for="password-input" class="text-md font-medium">
                     <span class="text-red-500">*</span>
                     비밀번호
