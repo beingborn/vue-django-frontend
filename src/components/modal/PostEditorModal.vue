@@ -3,22 +3,43 @@
     import { useUserStore } from '@/store/user';
     import { CdChromeClose } from '@kalimahapps/vue-icons';
     import axios from 'axios';
+    import { storeToRefs } from 'pinia';
     import { Button, Carousel, Dialog, InputText, Select, Textarea } from 'primevue';
-    import { ref, useTemplateRef } from 'vue';
+    import { onMounted, ref, useTemplateRef } from 'vue';
 
     const postEditorModal = usePostEditorModalStore();
 
     const title = ref('');
     const content = ref('');
-    const selectedtag = ref('');
+    const selectedtag = ref();
     const images = ref([]);
     const fileInput = useTemplateRef('file-input');
-    const tags = ref(['태그 선택', '태그1', '태그2', '태그3', '태그4', '태그5']);
+    const tags = ref([]);
 
     const userStore = useUserStore();
     const { getAuthToken } = userStore;
-
+    const { authToken } = storeToRefs(userStore);
     const user = getAuthToken();
+
+    import { watch } from 'vue';
+
+    watch(selectedtag, (val) => {
+        console.log('선택된 태그:', val);
+    });
+
+    console.log(selectedtag.value);
+
+    const getTags = async () => {
+        try {
+            const response = await axios.post(import.meta.env.VITE_API_BASE_URL + '/tag/views', {
+                access_token: authToken.value.access_token,
+            });
+
+            tags.value = response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const handleSelectImages = (e) => {
         // 파일 유무 확인
@@ -70,6 +91,10 @@
             console.log(error);
         }
     };
+
+    onMounted(() => {
+        getTags();
+    });
 </script>
 <template>
     <Dialog
@@ -89,7 +114,19 @@
                 placeholder="무슨 일이 있었나요?"
                 fluid
             />
-            <Select v-model="selectedtag" :options="tags" placeholder="태그 선택" class="w-40" />
+            <div class="flex items-center gap-4">
+                <Select
+                    optionLabel="name"
+                    v-model="selectedtag"
+                    :options="tags"
+                    placeholder="태그 선택"
+                    class="w-40"
+                />
+                <div
+                    :class="`w-8 h-8 rounded-md border border-gray-700`"
+                    :style="{ backgroundColor: selectedtag?.color }"
+                ></div>
+            </div>
             <Carousel
                 v-if="images.length > 0"
                 :value="images"
