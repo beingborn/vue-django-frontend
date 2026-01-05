@@ -50,7 +50,7 @@
                         <Popover ref="profile" :key="authToken">
                             <div class="flex flex-col gap-4 w-30">
                                 <a
-                                    :href="`/profile/${authToken}`"
+                                    :href="`/profile/${authToken.access_token}`"
                                     class="leading-8 px-1 rounded-md cursor-pointer text-left hover:bg-gray-100 transition duration-300 ease-in-ou"
                                     @click="handleClickProfile"
                                     v-if="authToken"
